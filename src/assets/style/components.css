@@ -1,0 +1,14 @@
+.lineChart {
+    width: 500px;
+    height: 500px;
+}
+
+.scatterChart {
+    width: 500px;
+    height: 500px;
+}
+
+.gaugeChart {
+    width: 500px;
+    height: 500px;
+}

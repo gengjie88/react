@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     z-index: -10;
-    background-image: url(./assets/img/Index_Bg.jpg);
+    /* background-image: url(./assets/img/Index_Bg.jpg); */
     background-repeat: no-repeat;
     background-size: 100% 100%;
     -webkit-background-size: cover;
