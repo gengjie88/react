@@ -1,6 +1,7 @@
 .lineChart {
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 250px;
+    margin: 0 auto;
 }
 
 .scatterChart {

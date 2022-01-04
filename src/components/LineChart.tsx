@@ -13,25 +13,21 @@ const Index: React.FC<IProps> = (props) => {
         let Max1 = calMax(props.x1);
         let Min1 = calMin(props.x1);
         let Max2 = calMax(props.x2);
-        let Min2 = calMin(props.x2); //用于对齐双y轴
+        let Min2 = calMin(props.x2); 
 
-        const chart = echarts.init(chartRef.current);   //echart初始化容器
-        let option = {  //配置项(数据都来自于props)
-            title: {
-                text: props.title ? props.title : "加载中...",
-            },
-            // xAxis: {
-            //     type: 'category',
-            //     data: props.xData,
-            // },
+        const chart = echarts.init(chartRef.current);   
+        let option = {  
+          // grid: {
+          //   x: 50,
+          //   //  y: 10,
+          //    x2: 50,
+          //   // y2: 10
+          // },       
             xAxis: {
                 type: "category",
                 boundaryGap: false,
                 data: ["before", "", "", "", "", "", "now"]
             },
-            // yAxis: {
-            //     type: 'value'
-            // },
             yAxis: [
                 {
                   type: "value",
@@ -41,7 +37,7 @@ const Index: React.FC<IProps> = (props) => {
                   interval: (Max1 - Min1) / 5,
                   splitNumber: 5,
                   nameTextStyle: {
-                    color: "yellow"
+                    color: "blue"
                   }
                 },
                 {
@@ -52,7 +48,7 @@ const Index: React.FC<IProps> = (props) => {
                   interval: (Max2 - Min2) / 5,
                   splitNumber: 5,
                   nameTextStyle: {
-                    color: "red"
+                    color: "green"
                   }
                 }
               ],
