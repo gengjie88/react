@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { IProps } from "./type";
+import { LineProps } from "./type";
 import * as echarts from "echarts";
 import '../assets/style/components.css';
 import {calMin,calMax} from '../tools/dataFormat'
 
-const Index: React.FC<IProps> = (props) => {
+const Index: React.FC<LineProps> = (props) => {
 
-    const chartRef:any = useRef();  //拿到DOM容器
+    const chartRef:any = useRef();  
 
-    // 每当props改变的时候就会实时重新渲染
+
     useEffect(()=>{
         let Max1 = calMax(props.x1);
         let Min1 = calMin(props.x1);
@@ -16,13 +16,7 @@ const Index: React.FC<IProps> = (props) => {
         let Min2 = calMin(props.x2); 
 
         const chart = echarts.init(chartRef.current);   
-        let option = {  
-          // grid: {
-          //   x: 50,
-          //   //  y: 10,
-          //    x2: 50,
-          //   // y2: 10
-          // },       
+        let option = {     
             xAxis: {
                 type: "category",
                 boundaryGap: false,
@@ -61,14 +55,9 @@ const Index: React.FC<IProps> = (props) => {
                 {
                   name: "预警时间",
                   type: "line",
-                //   yAxisIndex: 1,
                   data: props.x2
                 }
               ]
-            // series: [{
-            //     data: props.seriesData,
-            //     type: 'line'
-            // }]
         };
 
         chart.setOption(option);

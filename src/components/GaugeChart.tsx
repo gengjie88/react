@@ -6,14 +6,14 @@ import '../assets/style/components.css';
 
 const Index: React.FC<gaugeProps> = (props) => {
 
-    const chartRef:any = useRef();  //拿到DOM容器
+    const chartRef:any = useRef();  
 
-    // 每当props改变的时候就会实时重新渲染
+    
     useEffect(()=>{
         
 
-        const chart = echarts.init(chartRef.current);   //echart初始化容器
-        let option = {  //配置项(数据都来自于props)
+        const chart = echarts.init(chartRef.current);  
+        let option = {   
             series: [
                 {
                   type: "gauge",
@@ -27,11 +27,6 @@ const Index: React.FC<gaugeProps> = (props) => {
                       ]
                     }
                   },
-                  pointer: {
-                    itemStyle: {
-                      color: "inherit"
-                    }
-                  },
                   splitLine: {
                     show: false,
                     distance: -30,
@@ -43,14 +38,14 @@ const Index: React.FC<gaugeProps> = (props) => {
                   },
                   axisLabel: {
                     color: "inherit",
-                    distance: 10,
+                    distance: 15,
                     fontSize: 8
                   },
                   detail: {
                     valueAnimation: true,
-                    formatter: "\n{value}\n工况模式指数",
+                    formatter: props.formatter,
                     color: "inherit",
-                    fontSize: 8
+                    fontSize: 12
                   },
                   data: [{ value: props.data }]
                 }

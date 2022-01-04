@@ -1,8 +1,9 @@
-// 给props添加类型检查
-export interface IProps {
-    title: string,          //图表的标题（为string类型）
+export interface LineProps {
     x1:number[],
     x2:number[],
+}
+export interface LineProps1 {
+    x:number[],
 }
 export interface scatterProps {
     size:number,
@@ -10,5 +11,6 @@ export interface scatterProps {
     color:Array<string>
 }
 export interface gaugeProps {
-    data:number
+    data:number,
+    formatter:string
 }
