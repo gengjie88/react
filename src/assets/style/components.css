@@ -5,13 +5,12 @@
 }
 
 .scatterChart {
-    width: 500px;
-    height: 500px;
-    border-radius: 250px;
-    border: 1px #a72525 solid;
-    background-image: url(../img/BHL1.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    /* border-radius: 250px; */
 }
 
 .gaugeChart {
