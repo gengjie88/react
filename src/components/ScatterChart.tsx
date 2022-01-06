@@ -15,13 +15,13 @@ const Index: React.FC<scatterProps> = (props) => {
         const chart = echarts.init(chartRef.current);   //echart初始化容器
         let option = {  //配置项(数据都来自于props)
             xAxis: {
-                min: 0,
-                max: 100,
+                min: props.x_l,
+                max: props.x_h,
                 show: false
               },
               yAxis: {
-                min: 0,
-                max: 100,
+                min: props.y_l,
+                max: props.y_h,
                 show: false
               },
               grid: {

@@ -12,78 +12,11 @@ import {
   SettingFilled
 } from '@ant-design/icons';
 import axios from './tools/request';
+import goOtherPage from './tools/goOtherPage'
+import queryData from './tools/queryData'
 
 
-// import ReactEchartsCore from 'echarts-for-react/lib/core';
 
-// import echarts from 'echarts/lib/echarts';
-// import 'echarts/lib/chart/bar';
-// import 'echarts/lib/component/tooltip';
-// import 'echarts/lib/component/title';
-
-
-// function PageHome(props:any) {
-//   return (
-//     <div className='App'>
-//       {/* <Row className='RowTitle'>
-//        <Col span={8}></Col>
-//        <Col span={8}>
-//          <span className='StyleName'>{props.name}</span>
-//        </Col>
-//        <Col span={8}></Col>
-//      </Row> */}
-//      <ReactEchartsCore
-//       style={{ background: '#fff', height: '376px' }}
-//       echarts={echarts}
-//       option={getOption()}
-//     />
-//     </div>
-
-
-//   );
-// }
-// const getOption = () => {
-//   return {
-//     title: {
-//       text: '热门知识点统计图',
-//       subtext: '统计前7名热门知识点',
-
-//     },
-//     grid: {
-//       y: 70,
-//       x: 78,
-//     },
-//     xAxis: {
-//       type: 'value',
-//       show: false,
-//     },
-//     yAxis: {
-//       type: 'category',
-
-//       // ...SetyAxis, 这是我自己定义的纵轴，在另外一个文件
-//     },
-//     series: [
-//       {
-//         type: 'bar',
-//         barWidth: 20,
-//         data: {}, //这是我定义的渲染数据
-//         itemStyle: {
-//           normal: {
-//             color: '#5B8FF9',
-//           },
-//         },
-//         label: {
-//           color: '#f6f6f6',
-//           show: true,
-//           position: 'insideLeft',
-//         },
-//       },
-//     ],
-//     tooltip: {},
-//   };
-// };
-
-// export default PageHome;
 interface AppState {
   data: any;
   timerId: number
@@ -94,7 +27,7 @@ interface AppState {
   dataSource: any
   columns: any
   scatterChartData: any
-  data1:any
+  data1: any
 }
 
 
@@ -103,7 +36,7 @@ export default class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      data1 : [
+      data1: [
         {
           title: 'Ant Design Title 1',
         },
@@ -252,6 +185,24 @@ export default class App extends React.Component<{}, AppState> {
   }
   testclick() {
   }
+  // goOhterPage(name:string){
+  //   console.log("dd",name)
+  // }
+  goOhterPage = (name: string) => {
+    // console.log(goOtherPage(name))  
+    queryData(0, {
+      tags: ["data\\tag1", "data\\tag2"],
+      stime: 1641437731000,
+      etime: 1641437732000,
+      count: 10,
+    }).then((res) => {
+      console.log(res)
+    })
+
+
+
+  }
+
 
   render() {
     return (
@@ -284,52 +235,49 @@ export default class App extends React.Component<{}, AppState> {
                     <div className='main_data'>
                       <div><Tag color="#f50">维度1:{this.state.data}</Tag></div><br />
                       <div><Tag color="#f50">维度2:{this.state.data}</Tag></div>
-                    
-                   
-
                     </div>
                     <div className='button_group'>
-                    <div ><Button className='btn_1'  >全流程</Button></div>
-                    <div ><Button className='btn_1'>水循环系统</Button></div>
-                    <div ><Button className='btn_1'>变换炉1</Button></div>
-                    <div ><Button className='btn_1'>变换炉2</Button></div>
-                    <div ><Button className='btn_1'>变换全流程</Button></div>
-                    <div ><Button className='btn_1'>脱硫塔1</Button></div>
-                    <div ><Button className='btn_1'>脱硫塔2</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('qlc')} >全流程</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('sxhxt')}>水循环系统</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('bhl1')}>变换炉1</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('bhl2')}>变换炉2</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('bhqlc')}>变换全流程</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('tlt1')}>脱硫塔1</Button></div>
+                      <div><Button className='btn_1' onClick={() => this.goOhterPage('tlt2')}>脱硫塔2</Button></div>
                     </div>
-                    
-                      
-                      
+
+
+
                   </Col>
                   <Col span={14} >
                     <div className='scatter_container'>
                       <div className='scatter_container2'>
-                      <ScatterChart 
-                      size={this.state.scatterChartData.size}
-                      data={this.state.scatterChartData.data}
-                      color={this.state.scatterChartData.color}
-                    />
+                        {/* <ScatterChart
+                          size={this.state.scatterChartData.size}
+                          data={this.state.scatterChartData.data}
+                          color={this.state.scatterChartData.color}
+                        /> */}
                       </div>
-                    
+
                     </div>
-                    
+
                   </Col>
                   <Col span={5} >
-                  <div className='main_data'>
+                    <div className='main_data'>
                       <div><Tag color="#f50">维度1:{this.state.data}</Tag></div><br />
                       <div><Tag color="#f50">维度2:{this.state.data}</Tag></div>
-                    
-                   
+
+
 
                     </div>
                     <div className='button_group'>
-                    <div ><Button className='btn_1'  >安全</Button></div>
-                    <div ><Button className='btn_1'>PSA</Button></div>
-                    <div ><Button className='btn_1'>压缩机A</Button></div>
-                    <div ><Button className='btn_1'>压缩机B</Button></div>
-                    <div ><Button className='btn_1'>合成系统</Button></div>
-                    <div ><Button className='btn_1'>冰机</Button></div>
-                    <div ><Button className='btn_1'>氨罐区</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('aq')} >安全</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('psa')}>PSA</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('ysja')}>压缩机A</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('ysjb')}>压缩机B</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('hcxt')}>合成系统</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('bj')}>冰机</Button></div>
+                      <div ><Button className='btn_1' onClick={() => this.goOhterPage('agq')}>氨罐区</Button></div>
                     </div>
                   </Col>
                 </Row>
@@ -362,16 +310,16 @@ export default class App extends React.Component<{}, AppState> {
                 <div className='table'>
                   <span className='buttom_title'>工况分析列表</span>
                   <div className='table_container'>
-                  <Table
-                    dataSource={this.state.dataSource}
-                    columns={this.state.columns}
-                    pagination={false}
-                    scroll={{ y: 260 }}
+                    <Table
+                      dataSource={this.state.dataSource}
+                      columns={this.state.columns}
+                      pagination={false}
+                      scroll={{ y: 260 }}
 
-                  />
+                    />
                   </div>
-                  
-   
+
+
 
                 </div>
 
@@ -398,17 +346,17 @@ export default class App extends React.Component<{}, AppState> {
                 </div>
                 <div className='table'>
                   <span className='buttom_title_other'>稳定分析列表</span>
-                    <div className='table_container'>
+                  <div className='table_container'>
                     <Table
-                    dataSource={this.state.dataSource}
-                    columns={this.state.columns}
-                    pagination={false}
-                    scroll={{ y: 260 }}
-                   
+                      dataSource={this.state.dataSource}
+                      columns={this.state.columns}
+                      pagination={false}
+                      scroll={{ y: 260 }}
 
-                  />
-                    </div>
-                  
+
+                    />
+                  </div>
+
 
 
                 </div>
@@ -420,7 +368,7 @@ export default class App extends React.Component<{}, AppState> {
               <Button ghost type="link">暂停</Button>
               <Button ghost type="link">下一页</Button>
               <Button ghost type="link">查询历史</Button>
-              <Button ghost icon={<SettingFilled /> }  type="link"/>
+              <Button ghost icon={<SettingFilled />} type="link" />
             </div>
           </div>
 
