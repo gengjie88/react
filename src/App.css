@@ -152,3 +152,10 @@
     background-color: transparent;
     /* color: #fff; */
 }
+
+.picker_container {
+    position: absolute;
+    text-align: center;
+    width: 500px;
+    bottom: 0px;
+}

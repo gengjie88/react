@@ -1,4 +1,5 @@
-import { Button, Col, Layout, List, Row, Table, Tag } from 'antd';
+import { Button, Col, Layout, List, Row, Table, Tag, DatePicker } from 'antd';
+
 import { Content, Footer, Header } from 'antd/lib/layout/layout';
 import React, { PureComponent, useState } from 'react';
 // import logo from './logo.svg';
@@ -14,7 +15,9 @@ import {
 import axios from './tools/request';
 import goOtherPage from './tools/goOtherPage'
 import queryData from './tools/queryData'
-
+import adapterData from './tools/adapterData';
+import moment from 'moment';
+const { RangePicker } = DatePicker;
 
 
 interface AppState {
@@ -189,14 +192,21 @@ export default class App extends React.Component<{}, AppState> {
   //   console.log("dd",name)
   // }
   goOhterPage = (name: string) => {
-    // console.log(goOtherPage(name))  
+    //   console.log(goOtherPage(name))  
+    //   queryData(1,["data\\line1", "data\\line2","data\\line3", "data\\gauge1","data\\gauge2", "data\\gauge3", "data\\scatter1"  , "data\\scatter1.EULO","data\\scatter1.EUHI", "data\\scatter2", "data\\scatter2.EULO","data\\scatter2.EUHI","data\\tag9"
+    // ]).then((res)=>{
+    //       console.log(res,'res')
+    //       adapterData(res)
+    //     })
+
     queryData(0, {
-      tags: ["data\\tag1", "data\\tag2"],
-      stime: 1641437731000,
-      etime: 1641437732000,
+      tags: ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter2", "data\\tag9"],
+      stime: 1641454831000,
+      etime: 1641455317000,
       count: 10,
     }).then((res) => {
-      console.log(res)
+      console.log(res, 'app')
+      adapterData(res)
     })
 
 
@@ -252,13 +262,21 @@ export default class App extends React.Component<{}, AppState> {
                   <Col span={14} >
                     <div className='scatter_container'>
                       <div className='scatter_container2'>
+                        {/* TODO */}
+                        {/* 散点图新增了高低限 */}
                         {/* <ScatterChart
                           size={this.state.scatterChartData.size}
                           data={this.state.scatterChartData.data}
                           color={this.state.scatterChartData.color}
                         /> */}
                       </div>
-
+                      <div className='picker_container'>
+                        <RangePicker
+                        onChange={value=>console.log(value![0]?.format('X'))} 
+                        showTime
+                        defaultValue={[moment('2015-06-06', 'YYYY-MM-DD'), moment('2015-06-06', 'YYYY-MM-DD')]}
+                         />
+                      </div>
                     </div>
 
                   </Col>
@@ -363,6 +381,8 @@ export default class App extends React.Component<{}, AppState> {
               </div>
             </div>
             <div className='buttom'>
+
+
               <Button ghost type="link">首页</Button>
               <Button ghost type="link">上一页</Button>
               <Button ghost type="link">暂停</Button>

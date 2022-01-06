@@ -19,8 +19,9 @@ const calMin = (arr:Array<number>)=>{
 
 const scatterDataFormat=(arr:Array<string>) =>{
     //将后台取到的数据进行处理
-    let x = arr[0];
-    let y = arr[1];
+    let x = arr[6];
+    let y = arr[7];
+    console.log(x,y)
     let newArr = [];
     let length = x.length;
     for (let index = 0; index < length; index++) {
