@@ -22,9 +22,9 @@ const Index: React.FC<LineProps1> = (props) => {
                 {
                   type: "value",
                   name: "稳定指数",
-                  // min: Min1,
-                  // max: Max1,
-                  // interval: (Max1 - Min1) / 5,
+                  min: -10,
+                  max: 110,
+                  interval: 30,
                   splitNumber: 5,
                   nameTextStyle: {
                     color: "blue"

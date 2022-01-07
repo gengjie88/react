@@ -12,7 +12,7 @@ export interface scatterProps {
     x_h:number,
     x_l:number,
     y_h:number,
-    y_l:number
+    y_l:number,
 
 }
 export interface gaugeProps {

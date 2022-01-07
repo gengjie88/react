@@ -66,18 +66,23 @@ export default class App extends React.Component<{},AppState> {
     clearInterval(this.state.tag);
   }
   testclick() {
+    console.log(this.state.tag,'tag')
+    queryData(this.state.tag,["data\\line1", "data\\line2","data\\line3", "data\\gauge1","data\\gauge2", "data\\gauge3", "data\\scatter1"  , "data\\scatter1.EULO","data\\scatter1.EUHI", "data\\scatter2", "data\\scatter2.EULO","data\\scatter2.EUHI","data\\tag9","data\\tag10"
+  ]).then((res)=>{
+      adapterData(res)
+        this.setState(defaultData)
+        console.log(this.state.scatterData.data,'scatterdata')
+      })
   }
   // goOhterPage(name:string){
   //   console.log("dd",name)
   // }
   goOhterPage = (name: string) => {
-    //   console.log(goOtherPage(name))  
-    //   queryData(1,["data\\line1", "data\\line2","data\\line3", "data\\gauge1","data\\gauge2", "data\\gauge3", "data\\scatter1"  , "data\\scatter1.EULO","data\\scatter1.EUHI", "data\\scatter2", "data\\scatter2.EULO","data\\scatter2.EUHI","data\\tag9"
-    // ]).then((res)=>{
-    //       console.log(res,'res')
-    //       adapterData(res)
-    //     })
-    console.log(this.state.name,'state')
+      // console.log(goOtherPage(name))  
+
+    // console.log(this.state.name,'state')
+
+    //查询历史数据示例
     // queryData(0, {
     //   tags: ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter2", "data\\tag9"],
     //   stime: 1641454831000,
