@@ -17,157 +17,36 @@ import goOtherPage from './tools/goOtherPage'
 import queryData from './tools/queryData'
 import adapterData from './tools/adapterData';
 import moment from 'moment';
+import defaultData from './tools/defaultData';
 const { RangePicker } = DatePicker;
 
 
+
 interface AppState {
-  data: any;
-  timerId: number
-  name: string
-  title: string
-  lineChartData: any
-  formatter: any
-  dataSource: any
-  columns: any
-  scatterChartData: any
-  data1: any
+ name:string,
+ title:string,
+ formatter:any,
+ size:number,
+ color:Array<string>,
+ tag:number,
+ lineData1:any,
+ lineData2:any,
+ gaugeData:any,
+ scatterData:any,
+ mainData:any,
+ tableData1:any,
+ tableData2:any,
+ columns:any
 }
 
 
-export default class App extends React.Component<{}, AppState> {
+export default class App extends React.Component<{},AppState> {
 
   constructor(props: any) {
     super(props);
     this.state = {
-      data1: [
-        {
-          title: 'Ant Design Title 1',
-        },
-        {
-          title: 'Ant Design Title 2',
-        },
-        {
-          title: 'Ant Design Title 3',
-        },
-        {
-          title: 'Ant Design Title 4',
-        },
-      ],
-      data: 50,
-      timerId: 0,
-      name: '淮河化工 模式化监控',
-      title: '气化炉水系统',
-      formatter: {
-        f1: '\n\n工况模式指数',
-        f2: '\n\n预警时间',
-        f3: '\n\n稳定指数',
-      },
-      lineChartData: {
-        //折线图模拟数据
-        x1: [20, 40, 50, 70, 15, 15, 15],
-        x2: [10, 30, 60, 80, 25, 15, 15],
-      },
-      scatterChartData: {
-        data: [[0, 0], [50, 80], [52, 40], [60, 86], [30, 60], [60, 70], [100, 100]],
-        size: 15,
-        color: [
-          "rgba(128, 128, 128, 0.7)",
-          "rgba(255, 0, 0, 1)",
-          "rgba(255, 242, 0, 1)",
-          "rgba(25, 5, 247, 1)"
-        ] //散点图展示点的默认颜色
-      },
-
-      dataSource: [
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        }, {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        }, {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-
-      ],
-      columns: [
-        {
-          title: '占比',
-          dataIndex: 'name',
-          key: 'name',
-        },
-        {
-          title: '当前值',
-          dataIndex: 'age',
-          key: 'age',
-        },
-        {
-          title: '描述',
-          dataIndex: 'address',
-          key: 'address',
-        },
-      ]
+      ...defaultData,
+      
     }
     this.testclick = this.testclick.bind(this)
   }
@@ -180,11 +59,11 @@ export default class App extends React.Component<{}, AppState> {
       () => this.testclick(),
       1000
     );
-    this.setState({ timerId: timerID })
+    this.setState({ tag: timerID })
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.timerId);
+    clearInterval(this.state.tag);
   }
   testclick() {
   }
@@ -198,16 +77,16 @@ export default class App extends React.Component<{}, AppState> {
     //       console.log(res,'res')
     //       adapterData(res)
     //     })
-
-    queryData(0, {
-      tags: ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter2", "data\\tag9"],
-      stime: 1641454831000,
-      etime: 1641455317000,
-      count: 10,
-    }).then((res) => {
-      console.log(res, 'app')
-      adapterData(res)
-    })
+    console.log(this.state.name,'state')
+    // queryData(0, {
+    //   tags: ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter2", "data\\tag9"],
+    //   stime: 1641454831000,
+    //   etime: 1641455317000,
+    //   count: 10,
+    // }).then((res) => {
+    //   console.log(res, 'app')
+    //   adapterData(res)
+    // })
 
 
 
@@ -226,7 +105,6 @@ export default class App extends React.Component<{}, AppState> {
               </Col>
               <Col span={8}></Col>
             </Row>
-
             <Row className='RowTitle'>
               <Col span={8}>
                 <span className='span_title_other'>工况分析</span>
@@ -243,8 +121,8 @@ export default class App extends React.Component<{}, AppState> {
                 <Row className='main_content'>
                   <Col span={5} >
                     <div className='main_data'>
-                      <div><Tag color="#f50">维度1:{this.state.data}</Tag></div><br />
-                      <div><Tag color="#f50">维度2:{this.state.data}</Tag></div>
+                      <div><Tag color="#f50">维度1:{this.state.mainData.d1}</Tag></div><br />
+                      <div><Tag color="#f50">维度2:{this.state.mainData.d2}</Tag></div>
                     </div>
                     <div className='button_group'>
                       <div><Button className='btn_1' onClick={() => this.goOhterPage('qlc')} >全流程</Button></div>
@@ -255,20 +133,19 @@ export default class App extends React.Component<{}, AppState> {
                       <div><Button className='btn_1' onClick={() => this.goOhterPage('tlt1')}>脱硫塔1</Button></div>
                       <div><Button className='btn_1' onClick={() => this.goOhterPage('tlt2')}>脱硫塔2</Button></div>
                     </div>
-
-
-
                   </Col>
                   <Col span={14} >
                     <div className='scatter_container'>
                       <div className='scatter_container2'>
-                        {/* TODO */}
-                        {/* 散点图新增了高低限 */}
-                        {/* <ScatterChart
-                          size={this.state.scatterChartData.size}
-                          data={this.state.scatterChartData.data}
-                          color={this.state.scatterChartData.color}
-                        /> */}
+                        <ScatterChart
+                          size={this.state.size}
+                          data={this.state.scatterData.data}
+                          color={this.state.color}
+                          x_h={this.state.scatterData.x_h}
+                          x_l={this.state.scatterData.x_l}
+                          y_h={this.state.scatterData.y_h}
+                          y_l={this.state.scatterData.y_l}
+                        />
                       </div>
                       <div className='picker_container'>
                         <RangePicker
@@ -278,15 +155,11 @@ export default class App extends React.Component<{}, AppState> {
                          />
                       </div>
                     </div>
-
                   </Col>
                   <Col span={5} >
                     <div className='main_data'>
-                      <div><Tag color="#f50">维度1:{this.state.data}</Tag></div><br />
-                      <div><Tag color="#f50">维度2:{this.state.data}</Tag></div>
-
-
-
+                      <div><Tag color="#f50">维度1:{this.state.mainData.x1}</Tag></div><br />
+                      <div><Tag color="#f50">维度2:{this.state.mainData.x2}</Tag></div>
                     </div>
                     <div className='button_group'>
                       <div ><Button className='btn_1' onClick={() => this.goOhterPage('aq')} >安全</Button></div>
@@ -303,25 +176,25 @@ export default class App extends React.Component<{}, AppState> {
               <div className='left'>
                 <div >
                   <LineChart
-                    x1={this.state.lineChartData.x1}
-                    x2={this.state.lineChartData.x2}
+                    x1={this.state.lineData1.x1}
+                    x2={this.state.lineData1.x2}
                   />
                 </div>
                 <div>
                   <Row className='gauge'>
                     <Col span={12}>
-                      <GaugeChart data={this.state.data} formatter={this.state.formatter.f1} />
+                      <GaugeChart data={this.state.gaugeData.gkmszs} formatter={this.state.formatter.f1} />
                     </Col>
                     <Col span={12}>
-                      <GaugeChart data={this.state.data} formatter={this.state.formatter.f2} />
+                      <GaugeChart data={this.state.gaugeData.yjzs} formatter={this.state.formatter.f2} />
                     </Col>
                   </Row>
                   <Row>
                     <Col span={12} className='value'>
-                      <span>{this.state.data}</span>
+                      <span>{this.state.gaugeData.gkmszs}</span>
                     </Col>
                     <Col span={12} className='value'>
-                      <span>{this.state.data}</span>
+                      <span>{this.state.gaugeData.yjzs}</span>
                     </Col>
                   </Row>
                 </div>
@@ -329,60 +202,44 @@ export default class App extends React.Component<{}, AppState> {
                   <span className='buttom_title'>工况分析列表</span>
                   <div className='table_container'>
                     <Table
-                      dataSource={this.state.dataSource}
+                      dataSource={this.state.tableData1}
                       columns={this.state.columns}
                       pagination={false}
                       scroll={{ y: 260 }}
-
                     />
                   </div>
-
-
-
                 </div>
-
               </div>
               <div className='right'>
                 <div >
                   <LineChart1
-                    x={this.state.lineChartData.x1}
+                    x={this.state.lineData2.x}
                   />
                 </div>
                 <div>
                   <Row className='gauge'>
-
-                    <GaugeChart data={this.state.data} formatter={this.state.formatter.f3} />
-
+                    <GaugeChart data={this.state.gaugeData.wdzs} formatter={this.state.formatter.f3} />
                   </Row>
                   <Row >
                     <Col span={24} className='value'>
-                      <span>{this.state.data}</span>
+                      <span>{this.state.gaugeData.wdzs}</span>
                     </Col>
-
-
                   </Row>
                 </div>
                 <div className='table'>
                   <span className='buttom_title_other'>稳定分析列表</span>
                   <div className='table_container'>
                     <Table
-                      dataSource={this.state.dataSource}
+                      dataSource={this.state.tableData1}
                       columns={this.state.columns}
                       pagination={false}
                       scroll={{ y: 260 }}
-
-
                     />
                   </div>
-
-
-
                 </div>
               </div>
             </div>
             <div className='buttom'>
-
-
               <Button ghost type="link">首页</Button>
               <Button ghost type="link">上一页</Button>
               <Button ghost type="link">暂停</Button>
@@ -391,16 +248,7 @@ export default class App extends React.Component<{}, AppState> {
               <Button ghost icon={<SettingFilled />} type="link" />
             </div>
           </div>
-
-
-
-
-          {/* {this.state.data} */}
-
-
         </div>
-        {/* <Button onClick={this.testclick}>fetch</Button> */}
-
       </>
     )
   }

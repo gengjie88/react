@@ -37,12 +37,76 @@ const defaultData = {
         d1:0,
         d2:0            
     },//维度1、2
-    tableData1:{
-        //表格1
-    },
+    tableData1:[
+        // 表格1
+        {
+          key: '1',
+          name: '胡彦斌',
+          age: 32,
+          address: '西湖区湖底公园1号',
+        },
+        {
+          key: '2',
+          name: '胡彦祖',
+          age: 42,
+          address: '西湖区湖底公园1号',
+        },
+        {
+          key: '1',
+          name: '胡彦斌',
+          age: 32,
+          address: '西湖区湖底公园1号',
+        },
+        {
+          key: '1',
+          name: '胡彦斌',
+          age: 32,
+          address: '西湖区湖底公园1号',
+        },
+        {
+          key: '2',
+          name: '胡彦祖',
+          age: 42,
+          address: '西湖区湖底公园1号',
+        },
+        {
+          key: '1',
+          name: '胡彦斌',
+          age: 32,
+          address: '西湖区湖底公园1号',
+        }, {
+          key: '1',
+          name: '胡彦斌',
+          age: 32,
+          address: '西湖区湖底公园1号',
+        },
+        {
+          key: '2',
+          name: '胡彦祖',
+          age: 42,
+          address: '西湖区湖底公园1号',
+        },
+    ],
     tableData2:{
         //表格2
     },
+    columns: [
+        {
+          title: '占比',
+          dataIndex: 'name',
+          key: 'name',
+        },
+        {
+          title: '当前值',
+          dataIndex: 'age',
+          key: 'age',
+        },
+        {
+          title: '描述',
+          dataIndex: 'address',
+          key: 'address',
+        },
+      ]
     
 }
 export default defaultData
