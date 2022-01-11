@@ -3,9 +3,9 @@ const defaultData = {
     title:'xx',//模型名称
     num:10,//设置散点图可以显示多少个散点
     formatter:{
-        f1: '\n\n工况模式指数',
-        f2: '\n\n预警时间',
-        f3: '\n\n稳定指数',
+        f1: '\n工况模式指数',
+        f2: '\n预警时间',
+        f3: '\n稳定指数',
     },//仪表盘名称
     size:10,//散点大小
     color: [
@@ -95,17 +95,20 @@ const defaultData = {
         {
           title: '占比',
           dataIndex: 'name',
-          key: 'name',
+          className:'table_head'
+          // key: 'name',
         },
         {
           title: '当前值',
           dataIndex: 'age',
-          key: 'age',
+          className:'table_head'
+          // key: 'age',
         },
         {
           title: '描述',
           dataIndex: 'address',
-          key: 'address',
+          className:'table_head'
+          // key: 'address',
         },
       ]
     

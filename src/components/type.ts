@@ -17,5 +17,6 @@ export interface scatterProps {
 }
 export interface gaugeProps {
     data:number,
-    formatter:string
+    formatter:string,
+    id:number
 }

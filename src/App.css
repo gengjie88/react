@@ -128,6 +128,20 @@
 
 .btn_1 {
     width: 100px;
+    background-color: transparent;
+    color: white;
+    border-color: blue;
+    border-radius: 10px;
+}
+
+.btn_1:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.btn_1:focus {
+    background-color: blue;
+    /* color: white; */
 }
 
 .buttom {
@@ -146,6 +160,8 @@
     background-image: url(./assets/img//BHL1.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    margin-top: -20px;
+    margin-left: -15px;
 }
 
 .ant-table-cell {
@@ -158,4 +174,40 @@
     text-align: center;
     width: 500px;
     bottom: 0px;
+}
+
+.tag_1 {
+    width: 30px;
+    height: 30px;
+    background-image: url(./assets/img/icon_tech.png);
+    background-size: 100% 100%;
+}
+
+.tag_2 {
+    width: 30px;
+    height: 30px;
+    background-image: url(./assets/img/icon_tech.png);
+    background-size: 100% 100%;
+}
+
+.noname {
+    margin-top: -50px;
+}
+
+.ant-table-thead>tr>th {
+    color: white;
+    background: transparent !important;
+}
+
+.ant-table {
+    color: white;
+    background-color: transparent !important;
+}
+
+.ant-table-tbody>tr>td {
+    background-color: transparent !important;
+}
+
+.ant-table-tbody>tr>td:hover {
+    background-color: transparent !important;
 }

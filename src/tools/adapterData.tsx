@@ -5,9 +5,9 @@ const adapterData = (res:any)=>{
 // 0    曲线1
 // 1    曲线2
 // 2    曲线3
-// 3    仪表盘1
-// 4    仪表盘2
-// 5    仪表盘3
+// 0    仪表盘1
+// 1    仪表盘2
+// 2    仪表盘3
 // 6    散点图1值
 // 7    散点图1低限
 // 8    散点图1高限
@@ -39,9 +39,9 @@ const adapterData = (res:any)=>{
     defaultData.lineData2.x = lineArray3
 
     //对仪表盘实时数据进行适配
-    defaultData.gaugeData.gkmszs = res[3]
-    defaultData.gaugeData.yjzs = res[4]
-    defaultData.gaugeData.wdzs = res[5]
+    defaultData.gaugeData.gkmszs = res[0]
+    defaultData.gaugeData.yjzs = res[1]
+    defaultData.gaugeData.wdzs = res[2]
 
     //对散点图实时数据进行适配
     //先适配上下限

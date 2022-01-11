@@ -12,7 +12,7 @@ const Index: React.FC<scatterProps> = (props) => {
     useEffect(()=>{
         
 
-        const chart = echarts.init(chartRef.current);   //echart初始化容器
+        const chart = typeof(echarts.getInstanceByDom(chartRef.current)) ?echarts.init(chartRef.current):echarts.getInstanceByDom(chartRef.current)  //echart初始化容器
         let option = {  //配置项(数据都来自于props)
             xAxis: {
                 min: props.x_l,
@@ -50,7 +50,7 @@ const Index: React.FC<scatterProps> = (props) => {
               ]
         };
 
-        chart.setOption(option);
+        chart!.setOption(option);
     }, [props]);
 
     return <div ref={chartRef} className="scatterChart"></div>
