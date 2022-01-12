@@ -11,7 +11,7 @@ const Index: React.FC<LineProps> = (props) => {
   const chartRef: any = useRef();
   let data: any
   function getDateList() {
-    var time = new Date().setMinutes(0);
+    var time = new Date().getTime();
     time = time - 24 * 60 * 60 * 1000
     let categoryData = [];
     for (var i = 0; i <= 4; i++) {

@@ -15,7 +15,8 @@ import {
 import axios from './tools/request';
 import goOtherPage from './tools/goOtherPage'
 import queryData from './tools/queryData'
-import adapterData from './tools/adapterData';
+import adapterCurData from './tools/adapterCurData';
+import adapterHisData from './tools/adapterHisData';
 import moment from 'moment';
 import defaultData from './tools/defaultData';
 import statusToColor from './tools/statusToColor';
@@ -38,6 +39,7 @@ interface AppState {
   tableData1: any,
   tableData2: any,
   columns: any,
+  timeSpan:any,
  
 }
 
@@ -48,9 +50,7 @@ export default class App extends React.Component<{}, AppState> {
     super(props);
     this.state = {
       ...defaultData,
-     
-
-
+      
     }
     this.testclick = this.testclick.bind(this)
   }
@@ -59,11 +59,11 @@ export default class App extends React.Component<{}, AppState> {
 
 
   componentDidMount() {
-    // const timerID: any = setInterval(
-    //   () => this.testclick(),
-    //   1000
-    // );
-    // this.setState({ tag: timerID })
+    const timerID: any = setInterval(
+      () => this.testclick(),
+      1000
+    );
+    this.setState({ tag: timerID })
   }
 
   componentWillUnmount() {
@@ -73,14 +73,31 @@ export default class App extends React.Component<{}, AppState> {
     // console.log(this.state.tag, 'tag')
     queryData(this.state.tag, ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter1.EULO", "data\\scatter1.EUHI", "data\\scatter2", "data\\scatter2.EULO", "data\\scatter2.EUHI", "data\\tag9", "data\\tag10"
     ]).then((res) => {
-      adapterData(res)
+      adapterCurData(res)
       this.setState(defaultData)
       // console.log(this.state.scatterData.data, 'scatterdata')
     })
   }
-  // goOtherPage(name:string){
-  //   console.log("dd",name)
-  // }
+  TimeSpanSet(v:any){
+    this.setState({timeSpan:[v![0]?.format('X'),v![1]?.format('X')]})
+  }
+  queryHis(){
+    let startTime = this.state.timeSpan[0]
+    let endTime = this.state.timeSpan[1]
+    clearInterval(this.state.tag);
+    this.setState({tag:0})
+    
+    console.log(this.state.tag,'tag')
+    queryData(this.state.tag, {
+      tags: ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter2", "data\\tag9", "data\\tag10"],
+      stime: 1641454831000,
+      etime: 1641455317000,
+      count: 10,
+    }).then((res) => {
+      console.log(res, 'app')
+      adapterHisData(res)
+    })
+  }
   goOtherPage =  (id:any) => {
     queryData(1, [
       "data\\testsStatus",
@@ -93,6 +110,8 @@ export default class App extends React.Component<{}, AppState> {
        ele!.style.color = colorList[id-1]
       
   })
+
+ 
    
     // console.log(statusToColor(code),'1111')
   
@@ -110,7 +129,7 @@ export default class App extends React.Component<{}, AppState> {
     //   count: 10,
     // }).then((res) => {
     //   console.log(res, 'app')
-    //   adapterData(res)
+    //   adapterCurData(res)
     // })
 
 
@@ -195,9 +214,10 @@ export default class App extends React.Component<{}, AppState> {
                       </Row>
                       <div className='picker_container'>
                         <RangePicker
-                          onChange={value => console.log(value![0]?.format('X'))}
+                          onChange={(v)=>this.TimeSpanSet(v)}
                           showTime
-                          defaultValue={[moment('2015-06-06', 'YYYY-MM-DD'), moment('2015-06-06', 'YYYY-MM-DD')]}
+                          showNow
+                          defaultValue={[moment('2022-01-01', 'YYYY-MM-DD'), moment('2022-01-01', 'YYYY-MM-DD')]}
                         />
                       </div>
                     </div>
@@ -235,14 +255,6 @@ export default class App extends React.Component<{}, AppState> {
                       <GaugeChart data={this.state.gaugeData.yjzs} formatter={this.state.formatter.f2} id={0} />
                     </Col>
                   </Row>
-                  {/* <Row>
-                    <Col span={12} className='value'>
-                      <span>{this.state.gaugeData.gkmszs}</span>
-                    </Col>
-                    <Col span={12} className='value'>
-                      <span>{this.state.gaugeData.yjzs}</span>
-                    </Col>
-                  </Row> */}
                 </div>
                 <div className='table'>
                   <span className='buttom_title'>工况分析列表</span>
@@ -253,7 +265,6 @@ export default class App extends React.Component<{}, AppState> {
                       pagination={false}
                       scroll={{ y: 260 }}
                     />
-                    
                   </div>
                 </div>
               </div>
@@ -267,11 +278,6 @@ export default class App extends React.Component<{}, AppState> {
                   <Row className='gauge'>
                     <GaugeChart data={this.state.gaugeData.wdzs} formatter={this.state.formatter.f3} id={1} />
                   </Row>
-                  {/* <Row >
-                    <Col span={24} className='value'>
-                      <span>{this.state.gaugeData.wdzs}</span>
-                    </Col>
-                  </Row> */}
                 </div>
                 <div className='table'>
                   <span className='buttom_title_other'>稳定分析列表</span>
@@ -282,9 +288,6 @@ export default class App extends React.Component<{}, AppState> {
                       pagination={false}
                       scroll={{ y: 260 }}
                     />
-                    
-
-
                   </div>
                 </div>
               </div>
@@ -294,7 +297,7 @@ export default class App extends React.Component<{}, AppState> {
               <Button ghost type="link">上一页</Button>
               <Button ghost type="link">暂停</Button>
               <Button ghost type="link">下一页</Button>
-              <Button ghost type="link">查询历史</Button>
+              <Button ghost type="link" onClick={()=>this.queryHis()}>查询历史</Button>
               {/* <Button ghost icon={<SettingFilled />} type="link" /> */}
             </div>
           </div>

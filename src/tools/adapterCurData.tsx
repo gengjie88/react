@@ -1,7 +1,8 @@
 import defaultData from "./defaultData";
 import {scatterDataFormat,tableDataFormat} from './dataFormat'
 
-const adapterData = (res:any)=>{
+const adapterCurData = (res:any)=>{
+ 
 // 0    曲线1
 // 1    曲线2
 // 2    曲线3
@@ -9,19 +10,15 @@ const adapterData = (res:any)=>{
 // 1    仪表盘2
 // 2    仪表盘3
 // 6    散点图1值
-// 7    散点图1低限
-// 8    散点图1高限
-// 9    散点图2值
+// 7    散点图1低限        散点图值2
+// 8    散点图1高限        表格1数据/关键数据
+// 9    散点图2值          表格2数据/关键数据
 // 10   散点图2低限
 // 11   散点图2高限
 // 12   表格1数据/关键数据
 // 13   表格2数据/关键数据
 
-
-// let newScatterData = scatterDataFormat(res)
-// console.log(newScatterData,'newScatterData')
-    // console.log(res,'ada')
-    
+   
 // 对折线图的实时数据进行适配
     let lineArray1 = defaultData.lineData1.x1;
     let lineArray2 = defaultData.lineData1.x2;
@@ -72,4 +69,4 @@ const adapterData = (res:any)=>{
     //3.对默认数据进行替换
 }
 
-export default adapterData
+export default adapterCurData

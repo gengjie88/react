@@ -17,7 +17,7 @@ const calMin = (arr:Array<number>)=>{
     return minval;
 } //计算折线图y轴最小值，用于多条y轴合并
 
-const scatterDataFormat=(arr:Array<string>) =>{
+const scatterDataFormat=(arr:any) =>{
     //将后台取到的数据进行处理
     let x = arr[6];
     let y = arr[7];

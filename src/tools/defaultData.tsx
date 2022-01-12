@@ -7,7 +7,7 @@ const defaultData = {
         f2: '\n预警时间',
         f3: '\n稳定指数',
     },//仪表盘名称
-    size:10,//散点大小
+    size:25,//散点大小
     color: [
         "rgba(128, 128, 128, 0.7)",
         "rgba(255, 0, 0, 1)",
@@ -28,7 +28,7 @@ const defaultData = {
         wdzs:0
     },//仪表盘
     scatterData:{
-        data:[[10,10],[20,20],[30,30]],
+        data:[[0,0]],
         x_h:0,//高限
         x_l:0,//低限
         y_h:0,
@@ -110,7 +110,9 @@ const defaultData = {
           className:'table_head'
           // key: 'address',
         },
-      ]
-    
+    ],
+    timeSpan:[
+      '1642539905', '1643440318'
+    ]
 }
 export default defaultData
