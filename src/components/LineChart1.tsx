@@ -34,17 +34,17 @@ const Index: React.FC<LineProps1> = (props) => {
         const chart = echarts.init(chartRef.current);   
         let option = {   
           tooltip:{
-           
-            trigger: 'none',
-            axisPointer: {
-              type: 'cross'
-            }
+            trigger: 'axis'
           },
             xAxis: {
                 type: "category",
                 boundaryGap: false,
                 axisLabel:{
-                  interval:2
+                  interval:9,
+                
+                },
+                axisLine:{
+                  onZero:false
                 },
                 data: xtimeData
             },

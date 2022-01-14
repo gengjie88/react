@@ -46,7 +46,19 @@ if(props.status !== 0){
       xAxis: {
         type: "category",
         boundaryGap: false,
+        axisLabel:{
+          interval:9,
+          
+        },
+        axisLine:{
+          onZero:false
+        },
         data: xtimeData
+    },
+      // xAxis: {
+        // type: "category",
+        // boundaryGap: false,
+        // data: xtimeData
         // data:['before','','','','','now']
         // min: new Date(),
         // max: new Date(),
@@ -61,7 +73,7 @@ if(props.status !== 0){
         //     + [t_date.getHours(), t_date.getMinutes()].join(':');
         // }
         // }
-      },
+      // },
       yAxis: [
         {
           type: "value",
