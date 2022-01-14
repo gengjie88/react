@@ -4,35 +4,49 @@ import * as echarts from "echarts";
 import '../assets/style/components.css';
 import moment from 'moment';
 // import {calMin,calMax} from '../tools/dataFormat'
-
+function getDateList() {
+  var time = new Date().getTime();
+  time = time - 24 * 60 * 60 * 1000
+  let categoryData = [];
+  for (var i = 0; i <= 10; i++) {
+    categoryData.unshift(moment(time).format('H:mm:ss'))
+    time -= 60 * 1000 / 4
+  }
+  // categoryData = categoryData.fill('',1,-1)
+  console.log('ttt',categoryData)
+  return categoryData;
+}
+let xtimeData:any;
 const Index: React.FC<LineProps1> = (props) => {
   //1.右边当前时间
   //2.新数据放最后、超过长度了的从前剔除
   const chartRef:any = useRef();  
-  function getDateList() {
-    var time = new Date().getTime()
-    console.log('time',time)
-    console.log('timex',moment(time).format('H:mm:ss'))
-    time = time - 24 * 60 * 60 * 1000
-    console.log('timed',moment(time).format('H:mm:ss'))
-    console.log('time1',time)   
-    let categoryData = [];
-    for (var i = 0; i <= 4; i++) {
-      categoryData.push(moment(time).format('H:mm:ss'))
-      time += 60 * 1000 / 4
-    }
-    console.log('timec',categoryData)
-    return categoryData;
+  if(props.status !== 0){
+    xtimeData = getDateList()
+  }else{
+     xtimeData = [moment(props.startTime*1000).format('H:mm:ss'),'','','','','','','','','',moment(props.endTime*1000).format('H:mm:ss')]
+     console.log('?',xtimeData)
+     console.log('?',moment(props.startTime*1000).format('H:mm:ss'))
   }
-  let  data = getDateList()
+
     useEffect(()=>{
 
         const chart = echarts.init(chartRef.current);   
-        let option = {     
+        let option = {   
+          tooltip:{
+           
+            trigger: 'none',
+            axisPointer: {
+              type: 'cross'
+            }
+          },
             xAxis: {
                 type: "category",
                 boundaryGap: false,
-                data: data
+                axisLabel:{
+                  interval:2
+                },
+                data: xtimeData
             },
             yAxis: [
                 {

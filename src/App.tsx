@@ -81,18 +81,20 @@ export default class App extends React.Component<{}, AppState> {
   TimeSpanSet(v:any){
     this.setState({timeSpan:[v![0]?.format('X'),v![1]?.format('X')]})
   }
+
   queryHis(){
+    // ?三次才实现，一次tag不变，第二次tag变、页面没变
     let startTime = this.state.timeSpan[0]
     let endTime = this.state.timeSpan[1]
     clearInterval(this.state.tag);
     this.setState({tag:0})
     
-    console.log(this.state.tag,'tag')
+    console.log('tag',this.state.tag)
     queryData(this.state.tag, {
       tags: ["data\\line1", "data\\line2", "data\\line3", "data\\gauge1", "data\\gauge2", "data\\gauge3", "data\\scatter1", "data\\scatter2", "data\\tag9", "data\\tag10"],
       stime: 1641454831000,
       etime: 1641455317000,
-      count: 10,
+      count: 11,
     }).then((res) => {
       console.log(res, 'app')
       adapterHisData(res)
@@ -244,6 +246,9 @@ export default class App extends React.Component<{}, AppState> {
                   <LineChart
                     x1={this.state.lineData1.x1}
                     x2={this.state.lineData1.x2}
+                    startTime={this.state.timeSpan[0]}
+                    endTime={this.state.timeSpan[1]}
+                    status={this.state.tag}
                   />
                 </div>
                 <div>
@@ -272,6 +277,9 @@ export default class App extends React.Component<{}, AppState> {
                 <div >
                   <LineChart1
                     x={this.state.lineData2.x}
+                    startTime={this.state.timeSpan[0]}
+                    endTime={this.state.timeSpan[1]}
+                    status={this.state.tag}
                   />
                 </div>
                 <div>

@@ -23,7 +23,7 @@ const adapterCurData = (res:any)=>{
     let lineArray1 = defaultData.lineData1.x1;
     let lineArray2 = defaultData.lineData1.x2;
     let lineArray3 = defaultData.lineData2.x;
-    if(lineArray1.length === 7 || lineArray2.length === 7 || lineArray3.length === 7){
+    if(lineArray1.length === 11 || lineArray2.length === 11 || lineArray3.length === 11){
         lineArray1.shift();
         lineArray1.push(res[0]);
         lineArray2.shift();

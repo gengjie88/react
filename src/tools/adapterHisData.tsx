@@ -16,6 +16,7 @@ const adapterHisData = (res:any)=>{
     console.log(defaultData.scatterData.data,'scd')
 
     defaultData.mainData.d1 = res[8][res.length-1]
+    // console.log('main',defaultData.mainData)
     defaultData.mainData.d2 = res[9][res.length-1]
 }
 export default adapterHisData
