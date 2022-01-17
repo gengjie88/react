@@ -12,37 +12,49 @@ const Index: React.FC<gaugeProps> = (props) => {
     useEffect(()=>{
         
 
-        const chart = echarts.init(chartRef.current);
+      const chart = typeof(echarts.getInstanceByDom(chartRef.current)) ?echarts.init(chartRef.current):echarts.getInstanceByDom(chartRef.current) 
         let option = {   
           series: [
               {
                 min:0,
                 max:100,
                 type: "gauge",
-                axisLine: {
-                  lineStyle: {
-                    width: 3,
-                    color: [
-                      [0.3, "#67e0e3"],
-                      [0.7, "#37a2da"],
-                      [1, "#fd666d"]
-                    ]
-                  }
+                axisLabel:{
+                  show:false
                 },
-                splitLine: {
-                  show: false,
-                  distance: -30,
-                  length: 3,
-                  lineStyle: {
-                    color: "#fff",
-                    width: 2
-                  }
+                axisLine:{
+                  show:false
                 },
-                axisLabel: {
-                  color: "inherit",
-                  distance: 15,
-                  fontSize: 8
+                axisTick:{
+                  show:false
                 },
+                splitLine:{
+                  show:false
+                },
+                // axisLine: {
+                //   lineStyle: {
+                //     width: 3,
+                //     color: [
+                //       [0.3, "#67e0e3"],
+                //       [0.7, "#37a2da"],
+                //       [1, "#fd666d"]
+                //     ]
+                //   }
+                // },
+                // splitLine: {
+                //   show: false,
+                //   distance: -30,
+                //   length: 3,
+                //   lineStyle: {
+                //     color: "#fff",
+                //     width: 2
+                //   }
+                // },
+                // axisLabel: {
+                //   color: "inherit",
+                //   distance: 15,
+                //   fontSize: 8
+                // },
                 detail: {
                   valueAnimation: true,
                   formatter:"\n\n{value}" + props.formatter,
@@ -59,7 +71,7 @@ const Index: React.FC<gaugeProps> = (props) => {
         }  
        
 
-        chart.setOption(option);
+        chart!.setOption(option);
     }, [props]);
 
     return <div ref={chartRef} className="gaugeChart"></div>

@@ -3,20 +3,7 @@ import {scatterDataFormat,tableDataFormat} from './dataFormat'
 
 const adapterCurData = (res:any)=>{
  
-// 0    曲线1
-// 1    曲线2
-// 2    曲线3
-// 0    仪表盘1
-// 1    仪表盘2
-// 2    仪表盘3
-// 6    散点图1值
-// 7    散点图1低限        散点图值2
-// 8    散点图1高限        表格1数据/关键数据
-// 9    散点图2值          表格2数据/关键数据
-// 10   散点图2低限
-// 11   散点图2高限
-// 12   表格1数据/关键数据
-// 13   表格2数据/关键数据
+
 
    
 // 对折线图的实时数据进行适配
@@ -42,12 +29,12 @@ const adapterCurData = (res:any)=>{
 
     //对散点图实时数据进行适配
     //先适配上下限
-    defaultData.scatterData.x_h = res[8]
-    defaultData.scatterData.x_l = res[7]
-    defaultData.scatterData.y_h = res[11]
-    defaultData.scatterData.y_l = res[10]
-    let x = res[6]
-    let y = res[9]
+    defaultData.scatterData.x_h = res[5]
+    defaultData.scatterData.x_l = res[4]
+    defaultData.scatterData.y_h = res[8]
+    defaultData.scatterData.y_l = res[7]
+    let x = res[3]
+    let y = res[6]
     let arr = [x,y]
     if(defaultData.scatterData.data.length < defaultData.num){
         defaultData.scatterData.data.push(arr)
@@ -57,8 +44,8 @@ const adapterCurData = (res:any)=>{
     }
 
     //适配关键数据
-    defaultData.mainData.d1 = res[12]
-    defaultData.mainData.d2 = res[13]
+    defaultData.mainData.d1 = res[3]
+    defaultData.mainData.d2 = res[6]
     
 
     

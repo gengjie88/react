@@ -13,7 +13,7 @@ function getDateList() {
     time -= 60 * 1000 / 4
   }
   // categoryData = categoryData.fill('',1,-1)
-  console.log('ttt',categoryData)
+  // console.log('ttt',categoryData)
   return categoryData;
 }
 let xtimeData:any;
@@ -25,13 +25,13 @@ const Index: React.FC<LineProps1> = (props) => {
     xtimeData = getDateList()
   }else{
      xtimeData = [moment(props.startTime*1000).format('H:mm:ss'),'','','','','','','','','',moment(props.endTime*1000).format('H:mm:ss')]
-     console.log('?',xtimeData)
-     console.log('?',moment(props.startTime*1000).format('H:mm:ss'))
+    //  console.log('?',xtimeData)
+    //  console.log('?',moment(props.startTime*1000).format('H:mm:ss'))
   }
 
     useEffect(()=>{
 
-        const chart = echarts.init(chartRef.current);   
+      const chart = typeof(echarts.getInstanceByDom(chartRef.current)) ?echarts.init(chartRef.current):echarts.getInstanceByDom(chartRef.current) 
         let option = {   
           tooltip:{
             trigger: 'axis'
@@ -41,7 +41,6 @@ const Index: React.FC<LineProps1> = (props) => {
                 boundaryGap: false,
                 axisLabel:{
                   interval:9,
-                
                 },
                 axisLine:{
                   onZero:false
@@ -72,7 +71,7 @@ const Index: React.FC<LineProps1> = (props) => {
               ]
         };
 
-        chart.setOption(option);
+        chart!.setOption(option);
     }, [props]);
 
     return <div ref={chartRef} className="lineChart"></div>

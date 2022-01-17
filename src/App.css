@@ -10,7 +10,7 @@
     height: 1080px;
     transform-origin: 0 0;
     position: absolute;
-    background-image: url(./assets/img/Index_Bg.jpg);
+    background-image: url(./assets/img/index_Bg.gif);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     left: 50%;
@@ -184,6 +184,20 @@
 }
 
 .tag_2 {
+    width: 30px;
+    height: 30px;
+    background-image: url(./assets/img/icon_tech.png);
+    background-size: 100% 100%;
+}
+
+.tag_3 {
+    width: 30px;
+    height: 30px;
+    background-image: url(./assets/img/icon_tech.png);
+    background-size: 100% 100%;
+}
+
+.tag_4 {
     width: 30px;
     height: 30px;
     background-image: url(./assets/img/icon_tech.png);

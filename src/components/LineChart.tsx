@@ -14,7 +14,7 @@ function getDateList() {
     categoryData.unshift(moment(time).format('H:mm:ss'))
     time -= 60 * 1000 / 4
   }
-  categoryData = categoryData.fill('',1,-1)
+  // categoryData = categoryData.fill('',1,-1)
   return categoryData;
 }
 let xtimeData:any;
@@ -38,7 +38,7 @@ if(props.status !== 0){
     // let Min2 = calMin(props.x2); 
 
     //  console.log(data,'data')
-    const chart = echarts.init(chartRef.current);
+    const chart = typeof(echarts.getInstanceByDom(chartRef.current)) ?echarts.init(chartRef.current):echarts.getInstanceByDom(chartRef.current) 
     let option = {
       tooltip:{
         trigger: 'axis'
@@ -47,33 +47,13 @@ if(props.status !== 0){
         type: "category",
         boundaryGap: false,
         axisLabel:{
-          interval:9,
-          
+          interval:9,  
         },
         axisLine:{
           onZero:false
         },
         data: xtimeData
     },
-      // xAxis: {
-        // type: "category",
-        // boundaryGap: false,
-        // data: xtimeData
-        // data:['before','','','','','now']
-        // min: new Date(),
-        // max: new Date(),
-        // axisLabel: {
-
-        // formatter: function (value: any) {
-        //   var t_date = new Date(value);
-        //   console.log([].join('-') + " "
-        //   + [t_date.getHours(), t_date.getMinutes()].join(':'))
-        //   // return [moment(t_date).format('H:mm:ss')]
-        //   return [].join('-') + " "
-        //     + [t_date.getHours(), t_date.getMinutes()].join(':');
-        // }
-        // }
-      // },
       yAxis: [
         {
           type: "value",
@@ -112,7 +92,7 @@ if(props.status !== 0){
       ]
     };
 
-    chart.setOption(option);
+    chart!.setOption(option);
   }, [props]);
 
   return <div ref={chartRef} className="lineChart"></div>

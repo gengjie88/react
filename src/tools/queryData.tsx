@@ -19,7 +19,6 @@ const queryData=(tag:number,data:any)=>{
     return new Promise(async (resolve,rejects)=>{
       const res =  axios.post(url,data)
       if((await res).status === 200){
-          console.log(res,'query')
           resolve ((await res).data)
       }
     })

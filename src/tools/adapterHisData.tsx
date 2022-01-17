@@ -13,10 +13,13 @@ const adapterHisData = (res:any)=>{
     defaultData.gaugeData.wdzs = res[2][res.length-1]
 
     defaultData.scatterData.data = scatterDataFormat(res)
-    console.log(defaultData.scatterData.data,'scd')
+    defaultData.scatterData.x_h = res[5]
+    defaultData.scatterData.x_l = res[4]
+    defaultData.scatterData.y_h = res[8]
+    defaultData.scatterData.y_l = res[7]
 
-    defaultData.mainData.d1 = res[8][res.length-1]
+    defaultData.mainData.d1 = res[4][res.length-1]
     // console.log('main',defaultData.mainData)
-    defaultData.mainData.d2 = res[9][res.length-1]
+    defaultData.mainData.d2 = res[7][res.length-1]
 }
 export default adapterHisData
