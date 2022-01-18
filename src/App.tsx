@@ -64,7 +64,8 @@ export default class App extends React.Component<{}, AppState> {
 
 
   componentDidMount() {
-    this.goOtherPage(1)
+    this.queryHis() 
+    // this.goOtherPage(1)
   }
   componentWillUnmount() {
     clearInterval(this.state.tag);
@@ -73,6 +74,19 @@ export default class App extends React.Component<{}, AppState> {
     this.setState({ timeSpan: [v![0]?.format('X'), v![1]?.format('X')] })
   }
   queryHis() {
+    axios.post('/api/DbComm/GetModelAnaLstRtEx',{Model: "NTXC\\ENTCLD"}).then((res:any)=>{
+      let arr = res.data.ResultData.DCTB
+      let newObj: { value: string; }[]=[]
+      arr.map((i: string)=>{
+        newObj.push({value:i})
+      })
+      console.log(newObj)
+      this.setState({tableData1:newObj})
+      // this.setState({tableData1:defaultData.tableData1})
+      // console.log(defaultData.tableData1)
+      // console.log(this.state.tableData1)
+      
+    })
     // // ?三次才实现，一次tag不变，第二次tag变、页面没变
     // let startTime = this.state.timeSpan[0]
     // let endTime = this.state.timeSpan[1]
@@ -291,12 +305,12 @@ export default class App extends React.Component<{}, AppState> {
                 <div className='table'>
                   <span className='buttom_title'>工况分析列表</span>
                   <div className='table_container'>
-                    {/* <Table
+                    <Table
                       dataSource={this.state.tableData1}
                       columns={this.state.columns}
                       pagination={false}
                       scroll={{ y: 260 }}
-                    /> */}
+                    />
                   </div>
                 </div>
               </div>
@@ -317,12 +331,12 @@ export default class App extends React.Component<{}, AppState> {
                 <div className='table'>
                   <span className='buttom_title_other'>稳定分析列表</span>
                   <div className='table_container'>
-                    {/* <Table
+                    <Table
                       dataSource={this.state.tableData1}
                       columns={this.state.columns}
                       pagination={false}
                       scroll={{ y: 260 }}
-                    /> */}
+                    />
                   </div>
                 </div>
               </div>

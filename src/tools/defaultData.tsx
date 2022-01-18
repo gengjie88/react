@@ -42,75 +42,21 @@ const defaultData = {
     tableData1:[
         // 表格1
         {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        }, {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },
+          value:''
+        }
+        
     ],
-    tableData2:{
+    tableData2:{ 
         //表格2
     },
     columns: [
         {
           title: '占比',
-          dataIndex: 'name',
+          dataIndex: 'value',
           className:'table_head'
           // key: 'name',
         },
-        {
-          title: '当前值',
-          dataIndex: 'age',
-          className:'table_head'
-          // key: 'age',
-        },
-        {
-          title: '描述',
-          dataIndex: 'address',
-          className:'table_head'
-          // key: 'address',
-        },
+        
     ],
     timeSpan:[
       '1642539905', '1643440318'
