@@ -149,7 +149,25 @@
 }
 
 .scatter_container {
+    background-image: url(./assets/img/ring.png);
+    width: 500px;
+    height: 500px;
+}
+
+.scatter_container_red {
     background-image: url(./assets/img/ring_red.png);
+    width: 500px;
+    height: 500px;
+}
+
+.scatter_container_yellow {
+    background-image: url(./assets/img/ring_yellow.png);
+    width: 500px;
+    height: 500px;
+}
+
+.scatter_container_gray {
+    background-image: url(./assets/img/ring_grey.png);
     width: 500px;
     height: 500px;
 }
@@ -224,4 +242,60 @@
 
 .ant-table-tbody>tr>td:hover {
     background-color: transparent !important;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: pink;
+    -webkit-appearance: none;
+}
+
+；::-webkit-scrollbar-track {
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    /* border-radius: 5px; */
+    box-shadow: inset 0 0 5px white;
+    background: rgb(8, 235, 8);
+    -webkit-box-shadow: inset 0;
+}
+
+
+/* Buttons */
+
+::-webkit-scrollbar-button:single-button {
+    background-color: #eeeaea;
+    display: block;
+    border-style: solid;
+    height: 13px;
+    width: 16px;
+}
+
+
+/* Up */
+
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent #941111 transparent;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+    border-color: transparent transparent #df0f0f transparent;
+}
+
+
+/* Down */
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    border-width: 8px 8px 0 8px;
+    border-color: #bd1717 transparent transparent transparent;
+}
+
+::-webkit-scrollbar-button:vertical:single-button:increment:hover {
+    border-color: #f70202 transparent transparent transparent;
+}
+
+.ant-table-container table>thead>tr:first-child th:last-child {
+    display: none;
 }

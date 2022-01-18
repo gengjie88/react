@@ -1,6 +1,7 @@
 const defaultData = {
     name:'XXXX模式化监控',//项目名称
-    title:'水洗塔V1303',//模型名称
+    id:1,
+    title:'',//模型名称
     num:100,//设置散点图可以显示多少个散点
     formatter:{
         f1: '\n工况模式指数',
