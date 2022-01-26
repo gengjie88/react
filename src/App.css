@@ -10,7 +10,7 @@
     height: 1080px;
     transform-origin: 0 0;
     position: absolute;
-    background-image: url(./assets/img/index_Bg.gif);
+    background-image: url(./assets/img/子页背景.gif);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     left: 50%;
@@ -246,7 +246,7 @@
 
 ::-webkit-scrollbar {
     width: 15px;
-    background-color: pink;
+    background-color: #0a163c;
     -webkit-appearance: none;
 }
 
@@ -257,7 +257,7 @@
 ::-webkit-scrollbar-thumb {
     /* border-radius: 5px; */
     box-shadow: inset 0 0 5px white;
-    background: rgb(8, 235, 8);
+    background: rgb(8, 31, 235);
     -webkit-box-shadow: inset 0;
 }
 
@@ -265,7 +265,7 @@
 /* Buttons */
 
 ::-webkit-scrollbar-button:single-button {
-    background-color: #eeeaea;
+    background-color: #0f7ce2;
     display: block;
     border-style: solid;
     height: 13px;
@@ -277,11 +277,11 @@
 
 ::-webkit-scrollbar-button:single-button:vertical:decrement {
     border-width: 0 8px 8px 8px;
-    border-color: transparent transparent #941111 transparent;
+    border-color: transparent transparent #0757be transparent;
 }
 
 ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
-    border-color: transparent transparent #df0f0f transparent;
+    border-color: transparent transparent #0757be transparent;
 }
 
 
@@ -289,11 +289,11 @@
 
 ::-webkit-scrollbar-button:single-button:vertical:increment {
     border-width: 8px 8px 0 8px;
-    border-color: #bd1717 transparent transparent transparent;
+    border-color: #0757be transparent transparent transparent;
 }
 
 ::-webkit-scrollbar-button:vertical:single-button:increment:hover {
-    border-color: #f70202 transparent transparent transparent;
+    border-color: #0757be transparent transparent transparent;
 }
 
 .ant-table-container table>thead>tr:first-child th:last-child {
