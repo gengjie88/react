@@ -1,6 +1,6 @@
 
 const statusXX = (res: any, eles: any) => {
-    let xxStatus = res[9]
+    let xxStatus = res
     switch (xxStatus) {
         case 0:
             eles[0].style.background = '#0A1843'

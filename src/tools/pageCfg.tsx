@@ -2,28 +2,28 @@ const pageCfg = ()=>{
     const cfg = [
         {
             id:1,
-            title:'气化炉R1301',
-            queryTag:'QXL1\\R1301'
+            title:'乙醛气柜',
+            queryTag:'PVC\\YQQG'
         },
         {
             id:2,
-            title:'水洗塔V1303',
-            queryTag:'QXL1\\V1303'
+            title:'精馏高塔',
+            queryTag:'PVC\\YQQG'
         },
         {
             id:3,
-            title:'高压闪蒸塔V1501',
-            queryTag:'QXL1\\V1501'
+            title:'精馏低塔',
+            queryTag:'PVC\\JLDT'
         },
         {
             id:4,
-            title:'低压闪蒸塔V1503',
-            queryTag:'QXL1\\V1503'
+            title:'DTCC',
+            queryTag:'PVC\\DTCC'
         },
         {
             id:5,
-            title:'闪蒸塔V1504',
-            queryTag:'QXL1\\V1504'
+            title:'VCMQG',
+            queryTag:'PVC\\VCMQG'
         }
     ]
       return cfg  

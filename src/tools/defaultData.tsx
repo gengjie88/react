@@ -16,13 +16,21 @@ const defaultData = {
         "rgba(25, 5, 247, 1)"
     ], //散点图展示点的默认颜色
     tag:1,//标记,定时器id，为0为历史，不为0为实时
-    lineData1:{
-        x1:[0,0,0,0,0,0,0,0,0,0,0],
-        x2:[0,0,0,0,0,0,0,0,0,0,0]
+    lineData:{
+        Line1:{
+            time:[],
+            value:[]
+        },
+        Line2:{
+            time:[],
+            value:[]
+        },
+        Line3:{
+            time:[],
+            value:[]
+        },
     },//折线图1
-    lineData2:{
-        x:[0,0,0,0,0,0,0,0,0,0,0]
-    },//折线图2
+
     gaugeData:{
         gkmszs:0,
         yjzs:0,
@@ -42,7 +50,8 @@ const defaultData = {
     tableData1:[
         // 表格1
         {
-          value:''
+          value:'',
+          key:0
         }
         
     ],
@@ -53,8 +62,8 @@ const defaultData = {
         {
           title: '占比',
           dataIndex: 'value',
-          className:'table_head'
-          // key: 'name',
+          className:'table_head',
+          key: 'key',
         },
         
     ],
@@ -64,3 +73,4 @@ const defaultData = {
     status:0
 }
 export default defaultData
+
